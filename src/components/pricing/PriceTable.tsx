@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 
 const PriceTable = () => {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(1);
   const [pressed, setPressed] = useState<"prev" | "next" | null>(null);
   const tableRef = useRef<HTMLDivElement>(null);
   const [showArrows, setShowArrows] = useState(true);
@@ -18,7 +18,7 @@ const PriceTable = () => {
           const currentScrollY = window.scrollY;
           if (
             (currentScrollY < 2500 && window.innerWidth < 400) ||
-            (currentScrollY < 2200 && window.innerWidth < 485) ||
+            (currentScrollY < 2300 && window.innerWidth < 485) ||
             (currentScrollY < 1800 && window.innerWidth < 550) ||
             (currentScrollY < 1700 && window.innerWidth < 580) ||
             (currentScrollY < 1650 && window.innerWidth < 620) ||
@@ -26,12 +26,12 @@ const PriceTable = () => {
             (currentScrollY < 1550 && window.innerWidth < 680) ||
             (currentScrollY < 1400 && window.innerWidth < 710) ||
             (currentScrollY < 1450 && window.innerWidth < 740) ||
-            (currentScrollY < 1600 && window.innerWidth < 770) 
+            (currentScrollY < 1600 && window.innerWidth < 770)
           ) {
             setShowArrows(true);
           } else if (currentScrollY > lastScrollY) {
             setShowArrows(false); // scrolling down
-          } 
+          }
           setLastScrollY(currentScrollY);
           ticking = false;
         });
@@ -70,7 +70,7 @@ const PriceTable = () => {
           <div className="w-[90px] sm:w-[133px] border border-[#24C16F] mx-auto"></div>
         </div>
         {/* Desktop Table */}
-        <div className="w-full overflow-x-auto hidden md:block">
+        <div className="w-full  hidden md:block">
           <div className="min-w-[800px]">
             <table className="w-full border  border-[#3D3D3C] h-full bg-white text-left">
               <thead className="h-full">
@@ -88,7 +88,7 @@ const PriceTable = () => {
                       }`}
                     >
                       {idx === 1 && (
-                        <div className="absolute w-full h-6 -mt- -top-6 left-0 bg-[#24C16F] text-white text-sm font-medium flex items-center justify-center z-10">
+                        <div className=" w-full py-1 -mt-7 bg-[#24C16F] text-white text-sm font-medium flex items-center justify-center ">
                           Popular
                         </div>
                       )}
@@ -206,20 +206,22 @@ const PriceTable = () => {
 
         <div className="w-full px-4 md:hidden">
           <div className="">
-            <div
-              ref={tableRef}
-              className="overflow-x-auto scroll-smooth relative"
-            >
+            <div ref={tableRef} className=" scroll-smooth relative">
               <table className="h-full mx-auto">
-                <thead className="h-full ">
-                  <tr className="h-full ">
-                    <th className="bg-[#24C16F] border border-b-0 flex h-full w-full text-2xl text-[#222] font-bold flex-col px-4 py-4 text-left "></th>
-                    <th className="bg-[#130826]  text-white! font-bold px-4 py-4 text-center w-1/2  border-[#3D3D3C]">
+                <thead className="h-full">
+                  <tr className="h-full">
+                    <th className="bg-[#24C16F] border border-b-0  flex h-full w-full text-2xl text-[#222] font-bold flex-col px-4 py-4 text-left "></th>
+                    <th className="bg-[#130826] relative text-white! font-bold px-4 py-4 text-center w-1/2 border-[#3D3D3C]">
+                      {current === 1 && (
+                        <div className="w-full flex items-center absolute left-0 -top-7 justify-center  py-1  bg-[#24C16F] text-white text-sm font-medium  ">
+                          Popular
+                        </div>
+                      )}
                       {plans[current].name}
                     </th>
                   </tr>
                   <tr>
-                    <td className="bg-[#24C16F] border-l border-t-0 flex h-full w-full text-2xl text-[#222] font-bold flex-col px-4 py-4 text-left  ">
+                    <td className="bg-[#24C16F] border-l border-t-none flex h-full w-full text-2xl text-[#222] font-bold flex-col px-4 py-4 text-left">
                       Features
                     </td>
                     <td className="bg-[#F0F0F2] px-4 py-2 text-center border border-[#3D3D3C]">
@@ -249,6 +251,7 @@ const PriceTable = () => {
                       <td className="px-4 py-3 text-[15px] font-semibold  text-[#000] bg-[#f5f5f6] text-left border border-[#3D3D3C]">
                         {feature}
                       </td>
+
                       <td className="px-4 py-3 text-center border border-[#3D3D3C]">
                         {typeof plans[current].features[i] === "string" ? (
                           <span className="text-[#222]">
