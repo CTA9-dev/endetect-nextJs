@@ -194,14 +194,14 @@ const Header = () => {
                 >
                   Schedule a Demo
                 </a>
-                <a
+                {/* <a
                   href="https://app.endetect.com/login.php"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="ast-custom-button text-white bg-[#E56902] hover:bg-[#b0550b] text-[16px] font-[500] px-[20px] py-[12px] text-center transition-colors duration-300"
                 >
                   Login
-                </a>
+                </a> */}
               </div>
             </div>
           )}

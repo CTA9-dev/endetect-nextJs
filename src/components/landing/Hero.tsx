@@ -21,7 +21,7 @@ const Hero = () => {
           <h1 className=" text-white! text-center">
             Employee Monitoring and Productivity Tracking Solution
           </h1>
-          <div className="flex py-1 flex-col md:flex-row items-center w-full --font-roboto justify-between md:text-xl font-bold  gap-5 md:gap-0">
+          <div className="flex py-1 flex-col md:flex-row items-center w-full --font-roboto justify-between md:text-xl font-bold  gap-2 md:gap-0">
             <div className="flex flex-col gap-2 items-center md:items-start justify-center w-full md:w-auto">
               <span className="text-[15px] leading-6 flex items-center font-[600] ">
                 <Check className="mr-2 bg-[#24C16F] text-white rounded-full  h-5 w-5" />
